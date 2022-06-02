@@ -22,10 +22,10 @@ int main()
     introduce_cero(matriz_general);
     colocador_de_minas(matriz_minas);
     leer_matrices(matriz_minas);
-    printf("\n\n\n\n\n");
+    printf("\n\n");
     minas_cercanas_1(matriz_minas,matriz_general);
     leer_matrices(matriz_general);
-    printf("\n\n\n\n\n");
+    printf("\n\n");
     leer_matrices(matriz_minas);
     return 0;
 }
@@ -74,15 +74,44 @@ void introduce_cero(int matriz [][COLUMNAS]){
     }
 }
 
+int recorrer_matriz_de_forma_cuadrada(int fila,int columna,int matriz[][COLUMNAS]){
+    fila = fila -1;
+    columna = columna -1;
+    int contador=0;
+    for (int k = 0+fila; k < 3+fila; k++)
+    {
+        for (int l = 0+columna; l < 3+columna; l++)
+        {
+            if (matriz[k][l]==1)
+            {
+                contador++;
+            }
+             
+        }
+        
+    }
+    return contador;  
+}
+
 void minas_cercanas_1(int matriz_a_calcular[][COLUMNAS], int matriz_a_devolver[FILAS][COLUMNAS]){
 
     for (int i = 1; i < FILAS-1; i++)
     {
         for (int j = 1; j < COLUMNAS-1; j++)
         {
-            matriz_a_calcular[i][j]=8;
+            int minas = 0;
+            if (matriz_a_calcular[i][j]==1)
+            {
+                matriz_a_devolver[i][j]=9;
+                continue;
+            }
+            
+            minas = recorrer_matriz_de_forma_cuadrada(i,j,matriz_a_calcular);
+            matriz_a_devolver[i][j]= minas;
         }
         
     }
     
 }
+
+

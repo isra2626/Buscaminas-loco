@@ -13,7 +13,7 @@ int main(){
     return 0;
 }
 
-void recorrer_fila(int fila,int t_columna,int matriz[10][10]){
+void recorrer_fila_1(int fila,int t_columna,int matriz[10][10]){
     for (int i = 1; i < t_columna-1; i++)
     {
         matriz[fila][i]=4;

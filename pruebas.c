@@ -8,17 +8,19 @@ void introduce_cero();
 int main(){
     int matriz_de_prueba[10][10];
     introduce_cero(matriz_de_prueba);
-    recorrer_matriz_de_forma_cuadrada(matriz_de_prueba);
+    recorrer_matriz_de_forma_cuadrada(1,1,matriz_de_prueba);
     leer_matrices(matriz_de_prueba);
     return 0;
 }
 
-void recorrer_matriz_de_forma_cuadrada(int matriz[10][10]){
-    for (int i = 0; i < 3; i++)
+void recorrer_matriz_de_forma_cuadrada(int fila,int columna,int matriz[10][10]){
+    fila = fila -1;
+    columna = columna -1;
+    for (int k = 0+fila; k < 3+fila; k++)
     {
-        for (int j = 0; j < 3; j++)
+        for (int l = 0+columna; l < 3+columna; l++)
         {
-            matriz[i][j]=1;
+            matriz[k][l]=1;
         }
         
     }

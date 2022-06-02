@@ -13,6 +13,18 @@ int main(){
     return 0;
 }
 
+void recorrer_matriz_de_forma_cuadrada(int matriz[10][10]){
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            matriz[i][j]=1;
+        }
+        
+    }
+    
+}
+
 void leer_matrices(int matriz[][10]){
     for (int i = 0; i < 10; i++)
     {

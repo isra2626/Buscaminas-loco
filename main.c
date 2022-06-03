@@ -14,6 +14,7 @@ void introduce_cero();
 int aleatorio_en_rango();
 void minas_cercanas_1();
 
+
 int main()
 {  int matriz_minas[FILAS][COLUMNAS];
     int matriz_general[FILAS][COLUMNAS];
@@ -113,5 +114,4 @@ void minas_cercanas_1(int matriz_a_calcular[][COLUMNAS], int matriz_a_devolver[F
     }
     
 }
-
 

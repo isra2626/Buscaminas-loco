@@ -18,9 +18,11 @@ void minas_cercanas_1();
 int main()
 {  int matriz_minas[FILAS][COLUMNAS];
     int matriz_general[FILAS][COLUMNAS];
+    int matriz_dePantalla[FILAS][COLUMNAS];
     srand(time(NULL));
     introduce_cero(matriz_minas);
     introduce_cero(matriz_general);
+    introduce_cero(matriz_dePantalla);
     colocador_de_minas(matriz_minas);
     leer_matrices(matriz_minas);
     printf("\n\n");
@@ -42,8 +44,8 @@ void mete_la_mina(int fila, int columna, int matriz[][COLUMNAS]){
 void colocador_de_minas (int matriz[FILAS][COLUMNAS]){
     int l;
   for (l = 0; l < CANTIDAD_DE_MINAS; l++) {
-    int fila = aleatorioEnRango(0, FILAS - 1);
-    int columna = aleatorioEnRango(0, COLUMNAS - 1);
+    int fila = aleatorioEnRango(1, FILAS - 2);
+    int columna = aleatorioEnRango(1, COLUMNAS - 2);
     if(matriz[fila][columna]==0){
         mete_la_mina(fila, columna, matriz);
         }else{

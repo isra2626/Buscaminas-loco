@@ -13,7 +13,8 @@ void leer_matrices();
 void introduce_cero();
 int aleatorio_en_rango();
 void minas_cercanas_1();
-
+void imprimir_pantalla_del_juego();
+void introduce_uno();
 
 int main()
 {  int matriz_minas[FILAS][COLUMNAS];
@@ -22,7 +23,7 @@ int main()
     srand(time(NULL));
     introduce_cero(matriz_minas);
     introduce_cero(matriz_general);
-    introduce_cero(matriz_dePantalla);
+    introduce_uno(matriz_dePantalla);
     colocador_de_minas(matriz_minas);
     leer_matrices(matriz_minas);
     printf("\n\n");
@@ -30,6 +31,8 @@ int main()
     leer_matrices(matriz_general);
     printf("\n\n");
     leer_matrices(matriz_minas);
+    printf("\n\n");
+    imprimir_pantalla_del_juego(matriz_dePantalla,matriz_general);
     return 0;
 }
 int aleatorioEnRango(int minimo, int maximo){
@@ -117,3 +120,39 @@ void minas_cercanas_1(int matriz_a_calcular[][COLUMNAS], int matriz_a_devolver[F
     
 }
 
+void imprimir_pantalla_del_juego(int matriz_estado_de_pantalla[][10],int matriz_del_tablero[][10]){
+    for (int i = 0; i < 10; i++)
+    {
+        for (int j = 0; j < 10; j++)
+        {
+            if (matriz_estado_de_pantalla[i][j]==0)
+            {
+                printf("# ");
+            }
+            else
+            {
+                if (matriz_del_tablero[i][j]==9)
+                {
+                    printf("* ");
+                }
+                else
+                {
+                    printf("%i ",matriz_del_tablero[i][j]);
+                }
+                
+            }
+            
+        }
+        printf("\n");
+    }   
+}
+
+void introduce_uno(int matriz [][COLUMNAS]){
+    for (int i = 0; i < FILAS; i++)
+    {
+        for (int j = 0; j < COLUMNAS; j++)
+        {
+            matriz[i][j]= 1;
+        }      
+    }
+}

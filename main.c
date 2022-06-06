@@ -15,24 +15,23 @@ int aleatorio_en_rango();
 void minas_cercanas_1();
 void imprimir_pantalla_del_juego();
 void introduce_uno();
+int contare(int matriz_de_minas[][10],int matriz_estado_pantalla[][10]);
+void abridor_minas();
+
 
 int main()
-{  int matriz_minas[FILAS][COLUMNAS];
+{   int matriz_minas[FILAS][COLUMNAS];
     int matriz_general[FILAS][COLUMNAS];
     int matriz_dePantalla[FILAS][COLUMNAS];
     srand(time(NULL));
     introduce_cero(matriz_minas);
     introduce_cero(matriz_general);
-    introduce_uno(matriz_dePantalla);
+    introduce_cero(matriz_dePantalla);
     colocador_de_minas(matriz_minas);
-    leer_matrices(matriz_minas);
-    printf("\n\n");
     minas_cercanas_1(matriz_minas,matriz_general);
-    leer_matrices(matriz_general);
-    printf("\n\n");
     leer_matrices(matriz_minas);
-    printf("\n\n");
     imprimir_pantalla_del_juego(matriz_dePantalla,matriz_general);
+    abridor_minas(matriz_minas,matriz_dePantalla,matriz_general);
     return 0;
 }
 int aleatorioEnRango(int minimo, int maximo){
@@ -155,4 +154,57 @@ void introduce_uno(int matriz [][COLUMNAS]){
             matriz[i][j]= 1;
         }      
     }
+}
+
+int contare(int matriz_de_minas[][10],int matriz_estado_pantalla[][10]){
+       int contador=0;
+       for (int i = 0; i < 10; i++)
+       {
+           for (int j = 0; j < 10; j++)
+           {
+               if (matriz_de_minas[i][j]==1)
+               {
+                  contador++; 
+               }
+                if (matriz_estado_pantalla[i][j]==1)
+                {
+                    contador++;
+                }
+           }
+       }
+       return contador;
+   }
+
+void abridor_minas(int matriz_de_minas[][COLUMNAS], int matriz_de_pantalla[][COLUMNAS],int matrizGeneral[][COLUMNAS]){
+    do
+    {
+        int fila_analizada;
+        int columna_anilizada;
+        if (contare(matriz_de_minas,matriz_de_pantalla)>=(FILAS*COLUMNAS))
+        {
+            introduce_uno(matriz_de_pantalla);
+            imprimir_pantalla_del_juego(matriz_de_pantalla,matrizGeneral);
+            printf("\nYOU WIN");
+        }
+        
+        printf("Coloca la fila a descubrir: ");
+        scanf("%i",&fila_analizada);
+        /*if (fila_analizada==0)break;*/
+        printf("Coloca la columna a descubrir: ");
+        scanf("%i",&columna_anilizada);
+        /*if(columna_anilizada==0)break;*/
+        
+        if (matriz_de_minas[fila_analizada][columna_anilizada]==1)
+        {
+            introduce_uno(matriz_de_pantalla);
+            imprimir_pantalla_del_juego(matriz_de_pantalla,matrizGeneral);
+            printf("\nYOU LOUSE");
+            break;
+        }
+        else
+        {
+            matriz_de_pantalla[fila_analizada][columna_anilizada]=1;
+            imprimir_pantalla_del_juego(matriz_de_pantalla,matrizGeneral);
+        }
+    } while (1);
 }

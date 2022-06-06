@@ -217,7 +217,7 @@ void abridor_minas(int matriz_de_minas[][COLUMNAS], int matriz_de_pantalla[][COL
             } while (1);
             
         }
-        if (contare(matriz_de_minas,matriz_de_pantalla)>=(FILAS*COLUMNAS))
+        if (contare(matriz_de_minas,matriz_de_pantalla)>=((FILAS*COLUMNAS)-1))
         {
             introduce_uno(matriz_de_pantalla);
             imprimir_pantalla_del_juego(matriz_de_pantalla,matrizGeneral);

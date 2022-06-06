@@ -184,7 +184,8 @@ void abridor_minas(int matriz_de_minas[][COLUMNAS], int matriz_de_pantalla[][COL
         {
             introduce_uno(matriz_de_pantalla);
             imprimir_pantalla_del_juego(matriz_de_pantalla,matrizGeneral);
-            printf("\nYOU WIN");
+            printf("\nYOU WIN\n");
+            break;
         }
         
         printf("Coloca la fila a descubrir: ");
@@ -198,7 +199,7 @@ void abridor_minas(int matriz_de_minas[][COLUMNAS], int matriz_de_pantalla[][COL
         {
             introduce_uno(matriz_de_pantalla);
             imprimir_pantalla_del_juego(matriz_de_pantalla,matrizGeneral);
-            printf("\nYOU LOUSE");
+            printf("\nYOU LOSE\n");
             break;
         }
         else

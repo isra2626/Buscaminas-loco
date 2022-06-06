@@ -1,3 +1,17 @@
+/*
+Equipo: Dinamita
+
+Grupo: 1EV4
+
+Carrera: IE
+
+Integrantes:*/
+    //Rojas Pérez Christian
+    //Valencia Valencia Salomon Antonio
+    //Orea Calvario Fernando Brayan
+    //Ayala Diaz Israel Antonio
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>

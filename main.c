@@ -185,9 +185,38 @@ void abridor_minas(int matriz_de_minas[][COLUMNAS], int matriz_de_pantalla[][COL
         printf("Coloca la fila a descubrir: ");
         scanf("%i",&fila_analizada);
         /*if (fila_analizada==0)break;*/
+        if (fila_analizada>=FILAS-1)
+        {
+            do
+            {
+                printf("Coloca la fila correcta: ");
+                scanf("%i",&fila_analizada);
+                if (fila_analizada>-1&&fila_analizada<FILAS)
+                {
+                    break;
+                }
+                
+            } while (1);
+            
+        }
+        
         printf("Coloca la columna a descubrir: ");
         scanf("%i",&columna_anilizada);
         /*if(columna_anilizada==0)break;*/
+        if (columna_anilizada>=COLUMNAS-1)
+        {
+            do
+            {
+                printf("Coloca la columna correcta: ");
+                scanf("%i",&columna_anilizada);
+                if (columna_anilizada>-1&&columna_anilizada<FILAS)
+                {
+                    break;
+                }
+                
+            } while (1);
+            
+        }
         if (contare(matriz_de_minas,matriz_de_pantalla)>=(FILAS*COLUMNAS))
         {
             introduce_uno(matriz_de_pantalla);

@@ -176,7 +176,7 @@ int contare(int matriz_de_minas[][10],int matriz_estado_pantalla[][10]){
    }
 
 void abridor_minas(int matriz_de_minas[][COLUMNAS], int matriz_de_pantalla[][COLUMNAS],int matrizGeneral[][COLUMNAS]){
-    do
+    for(;;)
     {
         int fila_analizada;
         int columna_anilizada;
@@ -185,7 +185,7 @@ void abridor_minas(int matriz_de_minas[][COLUMNAS], int matriz_de_pantalla[][COL
         printf("Coloca la fila a descubrir: ");
         scanf("%i",&fila_analizada);
         /*if (fila_analizada==0)break;*/
-        if (fila_analizada>=FILAS-1)
+        if (fila_analizada>=FILAS)
         {
             do
             {
@@ -203,7 +203,7 @@ void abridor_minas(int matriz_de_minas[][COLUMNAS], int matriz_de_pantalla[][COL
         printf("Coloca la columna a descubrir: ");
         scanf("%i",&columna_anilizada);
         /*if(columna_anilizada==0)break;*/
-        if (columna_anilizada>=COLUMNAS-1)
+        if (columna_anilizada>=COLUMNAS)
         {
             do
             {
@@ -236,5 +236,5 @@ void abridor_minas(int matriz_de_minas[][COLUMNAS], int matriz_de_pantalla[][COL
             matriz_de_pantalla[fila_analizada][columna_anilizada]=1;
             imprimir_pantalla_del_juego(matriz_de_pantalla,matrizGeneral);
         }
-    } while (1);
+    }
 }

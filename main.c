@@ -59,9 +59,9 @@ void colocador_de_minas (int matriz[FILAS][COLUMNAS]){
 } 
 
 void leer_matrices(int matriz[][COLUMNAS]){
-    for (int i = 0; i < FILAS; i++)
+    for (int i = 1; i < FILAS-1; i++)
     {
-        for (int j = 0; j < COLUMNAS; j++)
+        for (int j = 1; j < COLUMNAS-1; j++)
         {
            printf("%i ",matriz[i][j]);
         }
@@ -119,10 +119,10 @@ void minas_cercanas_1(int matriz_a_calcular[][COLUMNAS], int matriz_a_devolver[F
     
 }
 
-void imprimir_pantalla_del_juego(int matriz_estado_de_pantalla[][10],int matriz_del_tablero[][10]){
-    for (int i = 0; i < 10; i++)
+void imprimir_pantalla_del_juego(int matriz_estado_de_pantalla[][COLUMNAS],int matriz_del_tablero[][COLUMNAS]){
+    for (int i = 1; i < FILAS-1; i++)
     {
-        for (int j = 0; j < 10; j++)
+        for (int j = 0; j < COLUMNAS-1; j++)
         {
             if (matriz_estado_de_pantalla[i][j]==0)
             {
@@ -158,9 +158,9 @@ void introduce_uno(int matriz [][COLUMNAS]){
 
 int contare(int matriz_de_minas[][10],int matriz_estado_pantalla[][10]){
        int contador=0;
-       for (int i = 0; i < 10; i++)
+       for (int i = 1; i < FILAS-1; i++)
        {
-           for (int j = 0; j < 10; j++)
+           for (int j = 1; j < COLUMNAS-1; j++)
            {
                if (matriz_de_minas[i][j]==1)
                {
@@ -191,7 +191,7 @@ void abridor_minas(int matriz_de_minas[][COLUMNAS], int matriz_de_pantalla[][COL
             {
                 printf("Coloca la fila correcta: ");
                 scanf("%i",&fila_analizada);
-                if (fila_analizada>-1&&fila_analizada<FILAS)
+                if (fila_analizada>-1&&fila_analizada<FILAS-1)
                 {
                     break;
                 }
@@ -202,14 +202,14 @@ void abridor_minas(int matriz_de_minas[][COLUMNAS], int matriz_de_pantalla[][COL
         
         printf("Coloca la columna a descubrir: ");
         scanf("%i",&columna_anilizada);
-        /*if(columna_anilizada==0)break;*/
+        if(columna_anilizada==0)break;
         if (columna_anilizada>=COLUMNAS)
         {
             do
             {
                 printf("Coloca la columna correcta: ");
                 scanf("%i",&columna_anilizada);
-                if (columna_anilizada>-1&&columna_anilizada<FILAS)
+                if (columna_anilizada>-1&&columna_anilizada<FILAS-1)
                 {
                     break;
                 }
@@ -217,7 +217,7 @@ void abridor_minas(int matriz_de_minas[][COLUMNAS], int matriz_de_pantalla[][COL
             } while (1);
             
         }
-        if (contare(matriz_de_minas,matriz_de_pantalla)>=((FILAS*COLUMNAS)-1))
+        if (contare(matriz_de_minas,matriz_de_pantalla)>=(((FILAS-1)*(COLUMNAS-1))-1))
         {
             introduce_uno(matriz_de_pantalla);
             imprimir_pantalla_del_juego(matriz_de_pantalla,matrizGeneral);
